@@ -11,6 +11,8 @@ namespace PlatformerMVC
 
         private SpriteAnimatorController _playerAnimator;
 
+        private PlayerController _playerController;
+
         private void Awake()
         {
             _playerConfig = Resources.Load<SpriteAnimatorConfig>("PlayerAnimCfg");
@@ -19,15 +21,18 @@ namespace PlatformerMVC
                 _playerAnimator = new SpriteAnimatorController(_playerConfig);
             }
 
-            if (_playerView)
-            {
-                _playerAnimator.StartAnimation(_playerView._spriteRenderer, _state, true, _animationSpeed);
-            }
+            _playerController = new PlayerController(_playerView, _playerAnimator);
         }
 
         private void Update()
         {
             _playerAnimator.Update();
+            _playerController.Update();
+        }
+
+        private void FixedUpdate()
+        {
+            
         }
     }
 }
