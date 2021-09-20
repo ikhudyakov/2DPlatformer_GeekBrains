@@ -7,11 +7,13 @@ namespace PlatformerMVC
         [SerializeField] private SpriteAnimatorConfig _playerConfig;
         [SerializeField] private int _animationSpeed = 10;
         [SerializeField] private LevelObjectView _playerView;
-        [SerializeField] private AnimState _state;
+        [SerializeField] private CannonView _cannonView;
 
         private SpriteAnimatorController _playerAnimator;
 
         private PlayerController _playerController;
+        private CannonController _cannon;
+        private BulletEmitterController _bulletEmiterController;
 
         private void Awake()
         {
@@ -22,12 +24,16 @@ namespace PlatformerMVC
             }
 
             _playerController = new PlayerController(_playerView, _playerAnimator);
+            _cannon = new CannonController(_cannonView._muzzleTransform, _playerView.transform);
+            _bulletEmiterController = new BulletEmitterController(_cannonView._bullets, _cannonView._emiterTransform);
         }
 
         private void Update()
         {
             _playerAnimator.Update();
             _playerController.Update();
+            _cannon.Update();
+            _bulletEmiterController.Update();
         }
 
         private void FixedUpdate()
