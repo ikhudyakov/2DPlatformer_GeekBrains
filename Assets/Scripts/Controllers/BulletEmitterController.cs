@@ -11,8 +11,8 @@ namespace PlatformerMVC
         private int _currentIndex;
         private float _timeTilNextBullet;
 
-        private const float _delay = 1f;
-        private const float _startSpeed = 9f;
+        private const float _delay = 10f;
+        private const float _startSpeed = 6f;
 
         private Vector3 Velocity;
 
