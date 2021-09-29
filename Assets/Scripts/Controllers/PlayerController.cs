@@ -8,7 +8,7 @@ namespace PlatformerMVC
         private float _xAxisInput;
         private bool _isJump;
 
-        private float _walkSpeed = 100f;
+        private float _walkSpeed = 150f;
         private float _animationSpeed = 10f;
         private float _movingTreshold = 0.1f;
 
@@ -70,9 +70,13 @@ namespace PlatformerMVC
             }
             else
             {
-                if (Mathf.Abs(_yVelocity) > _jumpTreshold)
+                if (Mathf.Abs(_yVelocity) > _jumpTreshold && _yVelocity < 0)
                 {
-                    _spriteAnimator.StartAnimation(_view._spriteRenderer, AnimState.Jump, true, _animationSpeed);
+                    _spriteAnimator.StartAnimation(_view._spriteRenderer, AnimState.Jump1, true, _animationSpeed);
+                }
+                else if (Mathf.Abs(_yVelocity) > _jumpTreshold && _yVelocity > 0)
+                {
+                    _spriteAnimator.StartAnimation(_view._spriteRenderer, AnimState.Jump2, true, _animationSpeed);
                 }
             }
         }
