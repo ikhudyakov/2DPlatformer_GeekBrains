@@ -59,7 +59,7 @@ namespace PlatformerMVC
                 MoveTowards();
             }
 
-            if (_contactPoller.IsGrounded && _view._rigidbody.velocity.y <= 0)
+            if (_contactPoller.IsGrounded)
             {
                 _spriteAnimator.StartAnimation(_view._spriteRenderer, isMoving ? AnimState.Run : AnimState.Idle, true, _animationSpeed);
 
