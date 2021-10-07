@@ -9,6 +9,7 @@ namespace PlatformerMVC
         [SerializeField] private LevelObjectView _playerView;
         [SerializeField] private CannonView _cannonView;
         [SerializeField] private GeneratorLevelView _generatorView;
+        [SerializeField] private QuestView _questView;
 
         private SpriteAnimatorController _playerAnimator;
 
@@ -17,6 +18,7 @@ namespace PlatformerMVC
         private BulletEmitterController _bulletEmiterController;
         private CameraController _cameraController;
         private TilemapGenerator _tilemapGenerator;
+        private QuestConfiguratorController _questConfigurator;
 
         private void Awake()
         {
@@ -33,6 +35,9 @@ namespace PlatformerMVC
 
             _tilemapGenerator = new TilemapGenerator(_generatorView);
             _tilemapGenerator.Start();
+
+            _questConfigurator = new QuestConfiguratorController(_questView);
+            _questConfigurator.Start();
         }
 
         private void Update()
